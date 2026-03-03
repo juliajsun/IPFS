@@ -7,14 +7,14 @@ PINATA_SECRET_KEY = "4dc00edb2223f0e3850ee1ce623971038a5a7f870a4c3e79be02fa6bd15
 def pin_to_ipfs(data):
     assert isinstance(data, dict), "Error pin_to_ipfs expects a dictionary"
     
-    url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"  # <-- Changed endpoint
+    url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"  
     headers = {
         "pinata_api_key": PINATA_API_KEY,
         "pinata_secret_api_key": PINATA_SECRET_KEY,
-        "Content-Type": "application/json"  # <-- Added content type
+        "Content-Type": "application/json"  
     }
     
-    response = requests.post(url, json=data, headers=headers)  # <-- Send as JSON body
+    response = requests.post(url, json=data, headers=headers)  
     result = response.json()
     cid = result["IpfsHash"]
     return cid
