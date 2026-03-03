@@ -1,14 +1,14 @@
 import requests
 import json
 
-PINATA_API_KEY = e4d9da83f2720d7f378d
-PINATA_SECRET_KEY = bcfe4c287a98b0f2163e43bd8d90cf1c06bb74b8743aae5338e91f24f8fea43f
+PINATA_API_KEY = "YOUR_API_KEY"
+PINATA_SECRET_KEY = "YOUR_SECRET_KEY"
 
 
 def pin_to_ipfs(data):
-	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
-	#YOUR CODE HERE
-  url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
+    assert isinstance(data, dict), "Error pin_to_ipfs expects a dictionary"
+
+    url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
 
     headers = {
         "pinata_api_key": PINATA_API_KEY,
@@ -22,22 +22,21 @@ def pin_to_ipfs(data):
     }
 
     response = requests.post(url, files=files, headers=headers)
-
     result = response.json()
 
     cid = result["IpfsHash"]
 
-    
-	  return cid
+    return cid
 
-def get_from_ipfs(cid,content_type="json"):
-	assert isinstance(cid,str), f"get_from_ipfs accepts a cid in the form of a string"
-	#YOUR CODE HERE	
-  url = f"https://gateway.pinata.cloud/ipfs/{cid}"
 
-  response = requests.get(url)
+def get_from_ipfs(cid, content_type="json"):
+    assert isinstance(cid, str), "get_from_ipfs accepts a cid in the form of a string"
 
-  data = response.json()
+    url = f"https://gateway.pinata.cloud/ipfs/{cid}"
 
-	assert isinstance(data,dict), "get_from_ipfs should return a dict"
-	return data
+    response = requests.get(url)
+    data = response.json()
+
+    assert isinstance(data, dict), "get_from_ipfs should return a dict"
+
+    return data
