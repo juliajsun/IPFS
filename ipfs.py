@@ -1,8 +1,8 @@
 import requests
 import json
 
-PINATA_API_KEY = "YOUR_API_KEY"
-PINATA_SECRET_KEY = "YOUR_SECRET_KEY"
+PINATA_API_KEY ="e4d9da83f2720d7f378d"
+PINATA_SECRET_KEY = "bcfe4c287a98b0f2163e43bd8d90cf1c06bb74b8743aae5338e91f24f8fea43f"
 
 
 def pin_to_ipfs(data):
